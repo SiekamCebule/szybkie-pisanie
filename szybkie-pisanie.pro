@@ -13,7 +13,7 @@ CONFIG += file_copies
 COPIES += copies
 copies.files = $$files(resources)
 copies.path = $$OUT_PWD
-# A
+# A dd
 SOURCES += \
     AddEditExerciseDialog.cpp \
     EditExercisesDialog.cpp \

@@ -32,17 +32,27 @@ void EditExercisesDialog::setLayoutExercises()
     QLayoutItem * child;
     while((child = exercisesLayout->takeAt(0))!= nullptr)
     {
+        ExerciseHeaderWidget * ehw = static_cast<ExerciseHeaderWidget *>(child->widget());
+        Exercise * ex = ehw->getExercise();
+        qDebug()<<"child->widget(): "<<ex->getName()<<" "<<ex->getBestTime().toString()<<" "<<ex->getDifficulty()<<" "<<ex->getIsCompleted()<<" "<<ex->getContent();
         delete child->widget();
+        qDebug()<<"delete child->widget()";
         delete child;
+        qDebug()<<"delete main child";
     }
 
     for(auto & e : *exercises)
-    {
-        ExerciseHeaderWidget * widget = new ExerciseHeaderWidget(&e);
+    {        qDebug()<<"goto loop";
+        ExerciseHeaderWidget * widget = new ExerciseHeaderWidget(&e, this);
+        qDebug()<<"create new widget";
         widget->setOriginalExercises(exercises);
+        qDebug()<<"setOriginalExercises";
         widget->setEditDialog(this);
+        qDebug()<<"setEditDialog";
         exercisesLayout->addWidget(widget);
+        qDebug()<<"add widget\n";
     }
+    qDebug()<<"end!  great :DDDD, oh wait...";
 }
 QVector<Exercise> *EditExercisesDialog::getExercises() const
 {

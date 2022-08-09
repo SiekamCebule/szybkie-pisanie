@@ -20,7 +20,7 @@ AddEditExerciseDialog::AddEditExerciseDialog(int action, QWidget *parent, Exerci
     if(this->action == Edit)
     {
         ui->lineEdit_name->setText(previousExercise->getName());
-        ui->comboBox_difficulty->setCurrentIndex(previousExercise->getDifficulty());
+        ui->comboBox_difficulty->setCurrentIndex(previousExercise->getDifficulty() - 1);
         ui->radioButton_resetResults->setChecked(true);
         ui->textEdit_content->setText(previousExercise->getContent());
     }
@@ -59,6 +59,8 @@ void AddEditExerciseDialog::setAction(int newAction)
 
 Exercise *AddEditExerciseDialog::getNewExercise()
 {
+    previousExercise->setBestTime(QTime(1, 24, 34, 34));
+    qDebug()<<previousExercise->getBestTime().toString();
     bool completed = false;
     if(ui->radioButton_resetResults)
     {

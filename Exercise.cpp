@@ -1,7 +1,7 @@
 #include "Exercise.h"
 
-Exercise::Exercise(QString name, const QString &content, int difficulty, const QTime &bestTime, bool isCompleted) : content(content),
-    name(name),
+Exercise::Exercise(QString name, const QString &content, int difficulty, const QTime &bestTime, bool isCompleted) : name(name),
+    content(content),
     difficulty(difficulty),
     bestTime(bestTime),
     isCompleted(isCompleted)
