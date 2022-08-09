@@ -1,6 +1,9 @@
 #pragma once
 
 #include <QMainWindow>
+#include <QVector>
+
+#include "Exercise.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -19,4 +22,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+
+    void loadExercisesFromFile();
+    QVector<Exercise> exercises;
 };

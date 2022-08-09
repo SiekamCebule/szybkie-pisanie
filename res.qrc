@@ -1,5 +1,12 @@
 <RCC>
-    <qresource prefix="/img">
-        <file>menupattern.jpg</file>
+    <qresource prefix="/">
+        <file>images/add.png</file>
+        <file>images/down.png</file>
+        <file>images/menupattern.jpg</file>
+        <file>images/remove.png</file>
+        <file>images/up.png</file>
+        <file>images/finished.png</file>
+        <file>images/unfinished.png</file>
+        <file>images/edit.png</file>
     </qresource>
 </RCC>

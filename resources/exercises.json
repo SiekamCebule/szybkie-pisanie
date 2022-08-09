@@ -3,7 +3,58 @@
 {
 "name": "Cwiczenie 1",
 "difficulty": 1,
-"content": "gh gh fj fj fg fg hj hj"
+"content": "gh gh fj fj fg fg hj hj",
+"bestTime": "02:04:32",
+"isCompleted": false
+},
+{
+"name": "Cwiczenie 1",
+"difficulty": 2,
+"content": "gh gh fj fj fg fg hj hj",
+"bestTime": "02:04:32",
+"isCompleted": false
+},
+{
+"name": "Cwiczenie 1",
+"difficulty": 3,
+"content": "gh gh fj fj fg fg hj hj",
+"bestTime": "02:04:32",
+"isCompleted": false
+},
+{
+"name": "Cwiczenie 1",
+"difficulty": 2,
+"content": "gh gh fj fj fg fg hj hj",
+"bestTime": "02:04:32",
+"isCompleted": true
+},
+{
+"name": "Cwiczenie 1",
+"difficulty": 1,
+"content": "gh gh fj fj fg fg hj hj",
+"bestTime": "02:04:32",
+"isCompleted": false
+},
+{
+"name": "Cwiczenie 1",
+"difficulty": 2,
+"content": "gh gh fj fj fg fg hj hj",
+"bestTime": "02:04:32",
+"isCompleted": true
+},
+{
+"name": "Cwiczenie 1",
+"difficulty": 2,
+"content": "gh gh fj fj fg fg hj hj",
+"bestTime": "02:04:32",
+"isCompleted": true
+},
+{
+"name": "Cwiczenie 1",
+"difficulty": 2,
+"content": "gh gh fj fj fg fg hj hj",
+"bestTime": "02:04:32",
+"isCompleted": true
 }
 ]
 }
