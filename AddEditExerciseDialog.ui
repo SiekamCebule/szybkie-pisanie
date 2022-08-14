@@ -83,9 +83,12 @@ color: #fefefe;
         <string notr="true">QLineEdit{
 padding: 4px;
 padding-left: 14px;
-color: rgb(158, 216, 255);
+color: lightGray;
 background-color: rgb(40, 40, 40);
 }</string>
+       </property>
+       <property name="maxLength">
+        <number>20</number>
        </property>
        <property name="placeholderText">
         <string>Nazwa ćwiczenia</string>

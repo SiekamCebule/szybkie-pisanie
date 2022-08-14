@@ -114,25 +114,18 @@ void ExerciseHeaderWidget::on_pushButton_edit_clicked()
             thisIndex = i;
     }
 
-    AddEditExerciseDialog dialog(AddEditExerciseDialog::Edit, this, &originalExercises->operator[](thisIndex));
+    AddEditExerciseDialog dialog(AddEditExerciseDialog::Edit, &originalExercises->operator[](thisIndex));
     dialog.setModal(true);
 
     if(dialog.exec() == QDialog::Accepted)
     {
-        qDebug()<<"accepted";
-        qDebug()<<dialog.getNewExercise()->getName();
-        originalExercises->operator[](thisIndex).setName(dialog.getNewExercise()->getName());
-        qDebug()<<dialog.getNewExercise()->getContent();
-        originalExercises->operator[](thisIndex).setContent(dialog.getNewExercise()->getContent());
-        qDebug()<<dialog.getNewExercise()->getDifficulty();
-        originalExercises->operator[](thisIndex).setDifficulty(dialog.getNewExercise()->getDifficulty());
-        qDebug()<<dialog.getNewExercise()->getIsCompleted();
-        originalExercises->operator[](thisIndex).setIsCompleted(dialog.getNewExercise()->getIsCompleted());
-        qDebug()<<dialog.getNewExercise()->getBestTime();
-        originalExercises->operator[](thisIndex).setBestTime(dialog.getNewExercise()->getBestTime());
+        originalExercises->operator[](thisIndex).setName(dialog.getNewExercise().getName());
+        originalExercises->operator[](thisIndex).setContent(dialog.getNewExercise().getContent());
+        originalExercises->operator[](thisIndex).setDifficulty(dialog.getNewExercise().getDifficulty());
+        originalExercises->operator[](thisIndex).setIsCompleted(dialog.getNewExercise().getIsCompleted());
+        originalExercises->operator[](thisIndex).setBestTime(dialog.getNewExercise().getBestTime());
 
         editDialog->setLayoutExercises();
     }
-    qDebug()<<"ennddddddddddddddddd";
 }
 

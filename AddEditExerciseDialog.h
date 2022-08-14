@@ -14,7 +14,7 @@ class AddEditExerciseDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit AddEditExerciseDialog(int action = Add, QWidget *parent = nullptr, Exercise * previousExercise = nullptr);
+    explicit AddEditExerciseDialog(int action = Add, Exercise * previousExercise = nullptr,  QWidget *parent = nullptr);
     ~AddEditExerciseDialog();
 
     enum Action{
@@ -24,10 +24,10 @@ public:
 
     int getAction() const;
     void setAction(int newAction);
-    Exercise* getNewExercise();
+    Exercise getNewExercise();
 
 private slots:
-    void on_comboBox_currentIndexChanged(int index);
+    void on_comboBoxCurrentIndexChanged(int index);
     void on_pushButton_accept_clicked();
 
 private:

@@ -2,6 +2,7 @@
 #include "ui_EditExercisesDialog.h"
 
 #include "ExerciseHeaderWidget.h"
+#include "AddEditExerciseDialog.h"
 
 #include <QPixmap>
 #include <QPalette>
@@ -32,27 +33,16 @@ void EditExercisesDialog::setLayoutExercises()
     QLayoutItem * child;
     while((child = exercisesLayout->takeAt(0))!= nullptr)
     {
-        ExerciseHeaderWidget * ehw = static_cast<ExerciseHeaderWidget *>(child->widget());
-        Exercise * ex = ehw->getExercise();
-        qDebug()<<"child->widget(): "<<ex->getName()<<" "<<ex->getBestTime().toString()<<" "<<ex->getDifficulty()<<" "<<ex->getIsCompleted()<<" "<<ex->getContent();
         delete child->widget();
-        qDebug()<<"delete child->widget()";
         delete child;
-        qDebug()<<"delete main child";
     }
-
     for(auto & e : *exercises)
-    {        qDebug()<<"goto loop";
+    {
         ExerciseHeaderWidget * widget = new ExerciseHeaderWidget(&e, this);
-        qDebug()<<"create new widget";
         widget->setOriginalExercises(exercises);
-        qDebug()<<"setOriginalExercises";
         widget->setEditDialog(this);
-        qDebug()<<"setEditDialog";
         exercisesLayout->addWidget(widget);
-        qDebug()<<"add widget\n";
     }
-    qDebug()<<"end!  great :DDDD, oh wait...";
 }
 QVector<Exercise> *EditExercisesDialog::getExercises() const
 {
@@ -63,3 +53,17 @@ void EditExercisesDialog::setExercises(QVector<Exercise> *newExercises)
 {
     exercises = newExercises;
 }
+
+void EditExercisesDialog::on_pushButton_add_clicked()
+{
+    AddEditExerciseDialog dialog(AddEditExerciseDialog::Add);
+    dialog.setModal(true);
+
+    if(dialog.exec() == QDialog::Accepted)
+    {
+        Exercise exercise = dialog.getNewExercise();
+        exercises->push_back(dialog.getNewExercise());
+        setLayoutExercises();
+    }
+}
+

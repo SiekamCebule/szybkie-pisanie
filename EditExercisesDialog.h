@@ -23,6 +23,9 @@ public:
     QVector<Exercise> *getExercises() const;
     void setExercises(QVector<Exercise> *newExercises);
 
+private slots:
+    void on_pushButton_add_clicked();
+
 private:
     Ui::EditExercisesDialog *ui;
     QVector<Exercise> * exercises;
