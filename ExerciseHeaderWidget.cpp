@@ -92,6 +92,27 @@ void ExerciseHeaderWidget::setEditDialog(EditExercisesDialog *newEditDialog)
     editDialog = newEditDialog;
 }
 
+void ExerciseHeaderWidget::transformToMiniWidget()
+{
+    delete ui->pushButton_edit;
+    delete ui->pushButton_remove;
+    delete ui->pushButton_up;
+    delete ui->pushButton_down;
+
+    practiceButton = new QPushButton(this);
+
+    practiceButton->setFlat(true);
+    practiceButton->setIcon(QIcon(":/images/play.png"));
+    practiceButton->setIconSize(QSize(53, 53));
+    practiceButton->setStyleSheet("QPushButton\n{\n	margin: 5px;\nborder: 1px solid;\n}");
+
+    ui->horizontalLayout->addWidget(practiceButton);
+
+    connect(practiceButton, &QPushButton::clicked, this, [this](){
+        qDebug()<<"[practiceButton connect] --> clicked";
+    });
+}
+
 void ExerciseHeaderWidget::on_pushButton_remove_clicked()
 {
     int thisIndex = 0;

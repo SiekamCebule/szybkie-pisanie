@@ -26,6 +26,8 @@ public:
     EditExercisesDialog *getEditDialog() const;
     void setEditDialog(EditExercisesDialog *newEditDialog);
 
+    void transformToMiniWidget();
+
 private slots:
     void on_pushButton_down_clicked();
     void on_pushButton_up_clicked();
@@ -34,6 +36,7 @@ private slots:
 
 private:
     Ui::ExerciseHeaderWidget *ui;
+    QPushButton *practiceButton;
 
     Exercise * exercise;
     QVector<Exercise> * originalExercises;

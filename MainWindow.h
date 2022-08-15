@@ -19,6 +19,7 @@ public:
 
 private slots:
     void on_pushButton_practice_editExercises_clicked();
+    void on_pushButton_practice_clicked();
 
 private:
     Ui::MainWindow *ui;

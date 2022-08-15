@@ -8,5 +8,6 @@
         <file>images/finished.png</file>
         <file>images/unfinished.png</file>
         <file>images/edit.png</file>
+        <file>images/play.png</file>
     </qresource>
 </RCC>

@@ -16,8 +16,9 @@
 
 #include <QMessageBox>
 
-#include "EditExercisesDialog.h"
 #include "Exercise.h"
+#include "EditExercisesDialog.h"
+#include "PracticeChoiceDialog.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -77,6 +78,17 @@ void MainWindow::loadExercisesFromFile()
         exercise.setIsCompleted(v.toObject().value("isCompleted").toBool());
 
         exercises.push_back(exercise);
+    }
+}
+
+
+void MainWindow::on_pushButton_practice_clicked()
+{
+    PracticeChoiceDialog dialog(&exercises, this);
+    dialog.setModal(true);
+    if(dialog.exec() == QDialog::Accepted)
+    {
+        qDebug()<<"Practice button clicked in main menu";
     }
 }
 

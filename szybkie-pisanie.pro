@@ -19,6 +19,7 @@ SOURCES += \
     EditExercisesDialog.cpp \
     Exercise.cpp \
     ExerciseHeaderWidget.cpp \
+    PracticeChoiceDialog.cpp \
     main.cpp \
     MainWindow.cpp
 
@@ -27,13 +28,15 @@ HEADERS += \
     EditExercisesDialog.h \
     Exercise.h \
     ExerciseHeaderWidget.h \
-    MainWindow.h
+    MainWindow.h \
+    PracticeChoiceDialog.h
 
 FORMS += \
     AddEditExerciseDialog.ui \
     EditExercisesDialog.ui \
     ExerciseHeaderWidget.ui \
-    MainWindow.ui
+    MainWindow.ui \
+    PracticeChoiceDialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
