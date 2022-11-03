@@ -113,7 +113,7 @@ Exercise AddEditExerciseDialog::getNewExercise()
     }
     else if(previousExercise == nullptr || ui->radioButton_resetResults) bestTime = QTime(0, 0, 0, 0);
 
-    return Exercise(ui->lineEdit_name->text(), ui->textEdit_content->toPlainText(), ui->comboBox_difficulty->currentIndex() + 1, bestTime, completed);
+    return Exercise(ui->lineEdit_name->text(), ui->textEdit_content->toPlainText(), ui->comboBox_difficulty->currentIndex() + 1, bestTime, completed, ui->spinBox_perSegment->value());
 }
 
 void AddEditExerciseDialog::on_pushButton_accept_clicked()

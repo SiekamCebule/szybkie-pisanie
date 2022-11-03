@@ -4,6 +4,7 @@
 #include <QPixmap>
 
 #include "AddEditExerciseDialog.h"
+#include "ExerciseWindow.h"
 
 ExerciseHeaderWidget::ExerciseHeaderWidget(Exercise * exercise, QWidget *parent) :
     QWidget(parent),
@@ -109,7 +110,13 @@ void ExerciseHeaderWidget::transformToMiniWidget()
     ui->horizontalLayout->addWidget(practiceButton);
 
     connect(practiceButton, &QPushButton::clicked, this, [this](){
-        qDebug()<<"[practiceButton connect] --> clicked";
+        ExerciseWindow window(exercise, this);
+        window.setModal(true);
+        window.setExercise(exercise);
+        if(window.exec() == QDialog::Accepted)
+        {
+
+        }
     });
 }
 

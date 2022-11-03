@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>540</width>
-    <height>596</height>
+    <height>635</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -146,6 +146,34 @@ background-color: rgb(40, 40, 40);
        </item>
       </widget>
      </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_difficulty_2">
+       <property name="font">
+        <font>
+         <family>Segoe UI Semibold</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+margin-right: 5px;
+color: #fefefe;
+}</string>
+       </property>
+       <property name="text">
+        <string>Litery na każdy segment</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QSpinBox" name="spinBox_perSegment">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
    <item>
@@ -180,7 +208,7 @@ color: #fefefe
         <x>0</x>
         <y>0</y>
         <width>520</width>
-        <height>348</height>
+        <height>351</height>
        </rect>
       </property>
       <property name="styleSheet">

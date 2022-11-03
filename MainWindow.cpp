@@ -47,7 +47,11 @@ void MainWindow::on_pushButton_practice_editExercises_clicked()
     dialog.setModal(true);
     dialog.setExercises(&exercises);
     dialog.setLayoutExercises();
-    dialog.exec();
+    if(dialog.exec() == QDialog::Rejected)
+    {
+        qDebug()<<exercises.length();
+        saveExercisesToFile();
+    }
 }
 
 void MainWindow::loadExercisesFromFile()
@@ -76,11 +80,37 @@ void MainWindow::loadExercisesFromFile()
         exercise.setBestTime(QTime::fromString(v.toObject().value("bestTime").toString(), Qt::DateFormat::TextDate));
         exercise.swapBestTimeParameters();
         exercise.setIsCompleted(v.toObject().value("isCompleted").toBool());
+        exercise.setPerSegment(v.toObject().value("perSegment").toInt());
 
         exercises.push_back(exercise);
     }
 }
 
+void MainWindow::saveExercisesToFile()
+{
+
+    QJsonArray array;
+    for(const auto & ex : exercises)
+    {
+        QJsonObject obj;
+        obj["name"] = ex.getName();
+        obj["difficulty"] = ex.getDifficulty();
+        obj["content"] = ex.getContent();
+        obj["bestTime"] = ex.getBestTime().toString();
+        obj["isCompleted"] = ex.getIsCompleted();
+        obj["perSegment"] = ex.getPerSegment();
+        array.push_back(obj);
+    }
+
+    QJsonObject title;
+    title["exercises"] = array;
+
+    QJsonDocument doc(title);
+    QFile file("resources/exercises.json");
+    file.open(QFile::WriteOnly | QFile::Text);
+    file.write(doc.toJson());
+    file.close();
+}
 
 void MainWindow::on_pushButton_practice_clicked()
 {

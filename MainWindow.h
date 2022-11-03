@@ -25,5 +25,6 @@ private:
     Ui::MainWindow *ui;
 
     void loadExercisesFromFile();
+    void saveExercisesToFile();
     QVector<Exercise> exercises;
 };

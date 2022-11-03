@@ -19,6 +19,7 @@ SOURCES += \
     EditExercisesDialog.cpp \
     Exercise.cpp \
     ExerciseHeaderWidget.cpp \
+    ExerciseWindow.cpp \
     PracticeChoiceDialog.cpp \
     main.cpp \
     MainWindow.cpp
@@ -28,6 +29,7 @@ HEADERS += \
     EditExercisesDialog.h \
     Exercise.h \
     ExerciseHeaderWidget.h \
+    ExerciseWindow.h \
     MainWindow.h \
     PracticeChoiceDialog.h
 
@@ -35,6 +37,7 @@ FORMS += \
     AddEditExerciseDialog.ui \
     EditExercisesDialog.ui \
     ExerciseHeaderWidget.ui \
+    ExerciseWindow.ui \
     MainWindow.ui \
     PracticeChoiceDialog.ui
 

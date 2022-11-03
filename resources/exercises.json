@@ -5,56 +5,64 @@
 "difficulty": 1,
 "content": "gh gh fj fj fg fg hj hj",
 "bestTime": "02:04:32",
-"isCompleted": false
+"isCompleted": false,
+"perSegment": 2
 },
 {
 "name": "Cwiczenie 1",
 "difficulty": 2,
 "content": "gh gh fj fj fg fg hj hj",
 "bestTime": "02:04:32",
-"isCompleted": false
+"isCompleted": false,
+"perSegment": 2
 },
 {
 "name": "Cwiczenie 1",
 "difficulty": 3,
 "content": "gh gh fj fj fg fg hj hj",
 "bestTime": "02:04:32",
-"isCompleted": false
+"isCompleted": false,
+"perSegment": 2
 },
 {
 "name": "Cwiczenie 1",
 "difficulty": 2,
 "content": "gh gh fj fj fg fg hj hj",
 "bestTime": "02:04:32",
-"isCompleted": true
+"isCompleted": true,
+"perSegment": 2
 },
 {
 "name": "Cwiczenie 1",
 "difficulty": 1,
 "content": "gh gh fj fj fg fg hj hj",
 "bestTime": "02:04:32",
-"isCompleted": false
+"isCompleted": false,
+"perSegment": 2
 },
 {
 "name": "Cwiczenie 1",
 "difficulty": 2,
 "content": "gh gh fj fj fg fg hj hj",
 "bestTime": "02:04:32",
-"isCompleted": true
+"isCompleted": true,
+"perSegment": 2
 },
 {
 "name": "Cwiczenie 1",
 "difficulty": 2,
 "content": "gh gh fj fj fg fg hj hj",
 "bestTime": "02:04:32",
-"isCompleted": true
+"isCompleted": true,
+"perSegment": 2
 },
 {
 "name": "Cwiczenie 1",
 "difficulty": 2,
 "content": "gh gh fj fj fg fg hj hj",
 "bestTime": "02:04:32",
-"isCompleted": true
+"isCompleted": true,
+"perSegment": 2
 }
 ]
 }
