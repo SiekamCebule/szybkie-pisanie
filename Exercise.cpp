@@ -56,6 +56,8 @@ void Exercise::swapBestTimeParameters()
 void Exercise::removeWhitespacesFromContent()
 {
     content = content.simplified();
+    content = content.simplified();
+    content = content.simplified();
     content.replace(" ", "");
 }
 

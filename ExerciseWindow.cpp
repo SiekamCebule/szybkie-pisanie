@@ -43,18 +43,17 @@ void ExerciseWindow::setExercise(Exercise *newExercise)
 
 void ExerciseWindow::setupSegments()
 {
-    qDebug()<<"setupSegments";
+    qDebug()<<"setupSegments wywołane";
     widgetsToDelete.clear();
     exercise->removeWhitespacesFromContent();
-    qDebug()<<"content at begin: "<<dynamicContent;
+    qDebug()<<"content na początku: "<<dynamicContent;
     int letters = dynamicContent.size();
     int perSegment = exercise->getPerSegment();
     int segments = letters / perSegment;
     int lastSegmentLetters = (letters) % (exercise->getPerSegment());
     if(lastSegmentLetters == 0) lastSegmentLetters = perSegment;
 
-    qDebug()<<letters <<", "<<perSegment<< ", "<<segments<< ", "<<lastSegmentLetters;
-    qDebug()<<"NOWE";
+    qDebug()<<letters <<" ilość contentu , "<<perSegment<< " na segment , "<<segments<< " segmentów , "<<lastSegmentLetters<<" w ostatnim segmencie";
 
     for(int i = 0; i < segments; i++)
     {
@@ -64,70 +63,80 @@ void ExerciseWindow::setupSegments()
         if(i+1 == segments)
             dynamicLineContentLength = lastSegmentLetters;
 
+        qDebug()<<"dynamicLineContentLength: "<<dynamicLineContentLength;
+
         QString lineContent;
         for(int j = 0; j < dynamicLineContentLength; j++)
         {
             lineContent.append(dynamicContent.at(i * perSegment + j));
         }
-        qDebug()<<"git1";
+        qDebug()<<"lineContent: "<<lineContent;
 
         QLabel * label = new QLabel(lineContent);
         label->setFont(QFont("Noto Sans Light", 11));
         label->setStyleSheet("QLabel{\n	color: rgb(255, 197, 138);\n}");
         vlayout->addWidget(label);
         widgetsToDelete.push_back(label);
-        qDebug()<<"git2";
 
         QLineEdit * lineEdit = new QLineEdit();
         lineEdit->setMaxLength(dynamicLineContentLength);
         vlayout->addWidget(lineEdit);
         widgetsToDelete.push_back(lineEdit);
-        qDebug()<<"git3";
+
+        dynamicContentLayout->addLayout(vlayout);
+        qDebug()<<"Dodano vlayout do dynamicContentLayout";
+        qDebug()<<"koniec funkcji setupSegments (przed connect)";
 
         connect(lineEdit, &QLineEdit::textChanged, this, [this, lineEdit](){
-            qDebug()<<"connect";
+            qDebug()<<"Slot wywołany";
             if(lineEdit->text().length() == dynamicLineContentLength)
             {
-                qDebug()<<"dynamicLineContentLength: "<<dynamicLineContentLength;
-                qDebug()<<"dynamicContent 1: "<<dynamicContent;
-                dynamicContent.erase(dynamicContent.begin(), dynamicContent.begin() + dynamicLineContentLength);
-                qDebug()<<"dynamicContent 2: "<<dynamicContent;
+                dynamicContent.erase(dynamicContent.constBegin(), dynamicContent.constBegin() + dynamicLineContentLength);
+                qDebug()<<"content po odcięciu: "<<dynamicContent;
                 // tworzenie layoutu na nowo
-                if(dynamicContentLayout != nullptr)
+                /*if(dynamicContentLayout != nullptr)
                 {
+                    qDebug()<<"ADRES dynamicContentLayout: "<<dynamicContentLayout;
                     QLayoutItem * item;
-                    while((item = dynamicContentLayout->takeAt(0)) != nullptr)
+                    while((item = dynamicContentLayout->itemAt(0)) != nullptr)
                     {
-                        delete item->layout();
-                        qDebug()<<"delete item->layout()";
-                        //delete item;
+                        if(item->layout() != nullptr)
+                        {
+                            qDebug()<<"usunięto layout "<<item->layout();
+                            delete item->layout();
+                        }
                     }
-                    qDebug()<<"before widgetsToDelete";
                     for(auto & widget : widgetsToDelete)
                     {
+                        qDebug()<<"usunięto widget "<<widget;
                         delete widget;
                     }
-                    qDebug()<<"after widgetsToDelete";
+                    widgetsToDelete.clear();
 
-                    /*qDebug()<<dynamicContentLayout->count();
-                    delete dynamicContentLayout->layout();
-                    qDebug()<<"delete dynamicContentLayout->layout()";
-                    delete dynamicContentLayout;
-                    qDebug()<<"delete dynamicContentLayout";
-                    qDebug()<<"setparent null";*/
+                    qDebug()<<"Ilośc widgetów w widgetsToDelete: "<<widgetsToDelete.size();
+                }*/
+                if(dynamicContentLayout->count() > 0)
+                {
+                    QLayoutItem * item = dynamicContentLayout->itemAt(0);
+                    qDebug()<<"ustawiono item";
+                    qDebug()<<"item-layout()->item0->widget(): "<<item->layout()->itemAt(0)->widget();
+                    delete item->layout()->itemAt(0)->widget();
+                    qDebug()<<"usunięto item-layout()->item0";
+                    qDebug()<<"item-layout()->item1->widget(): "<<item->layout()->itemAt(0)->widget();
+                    delete item->layout()->itemAt(0)->widget();
+                    qDebug()<<"usunięto item-layout()->item1";
+                    //delete item->layout();
+                    //qDebug()<<"usunięto item-layout()";
                 }
-                setupSegments();
-                qDebug()<<"dynamicContentLayout->count()"<<dynamicContentLayout->count();
-                qDebug()<<"ui->scrollAreaWidget_content->layout()"<<ui->scrollAreaWidget_content->layout();
+                qDebug()<<"dynamicContentLayout: "<<dynamicContentLayout;
+                qDebug()<<"Ilość layoutów przed ponowną konfiguracją (prawidłowo 0): "<<dynamicContentLayout->count();
+                //setupSegments();
+                qDebug()<<"Ilość layoutów po ponownej konfiguracji: (prawidłowo tyle ile segmentów czyli liter / na segment): "<<dynamicContentLayout->count();
+                qDebug()<<"scrollArea z ui (nie powinno się zmieniać): "<<ui->scrollAreaWidget_content;
             }
         });
-        qDebug()<<"dynamicContentLayout->addLayout(vlayout);";
-        dynamicContentLayout->addLayout(vlayout);
-        qDebug()<<"dynamicContentLayout: "<<dynamicContentLayout->count();
-        qDebug()<<"end";
     }
-    qDebug()<<"before absolute end";
-    dynamicContentLayout->itemAt(0)->layout()->itemAt(1)->widget()->setFocus();
-    qDebug()<<"absolute end";
+    //dynamicContentLayout->itemAt(0)->layout()->itemAt(1)->widget()->setFocus();
+    //qDebug()<<"ustawiono fokus na 1 LineEdit";
 }
-// po operacji usuwania nie ma już widgetów w layoucie ale są dalej ustawione swobodnie na ekranie
+// po operacji usuwania nie ma już widgetów w layoucie ale są dalej ustawione swobodnie na ekranie 0x23a79f54410, 0x23a79f54410
